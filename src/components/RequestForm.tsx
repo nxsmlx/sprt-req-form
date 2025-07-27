@@ -158,48 +158,48 @@ const RequestForm = () => {
           {/* Items Table */}
           <div className="border-2 border-form-border mb-6">
             {/* Table Header */}
-            <div className="grid grid-cols-6 bg-table-header border-b border-form-border">
-              <div className="p-2 border-r border-form-border text-center font-medium text-sm">NO.</div>
-              <div className="p-2 border-r border-form-border text-center font-medium text-sm">QTY</div>
-              <div className="p-2 border-r border-form-border text-center font-medium text-sm">ITEMS</div>
-              <div className="p-2 border-r border-form-border text-center font-medium text-sm">Serial Number</div>
-              <div className="p-2 border-r border-form-border text-center font-medium text-sm">USED</div>
-              <div className="p-2 text-center font-medium text-sm">RETURN</div>
+            <div className="grid grid-cols-12 bg-table-header border-b border-form-border">
+              <div className="col-span-1 p-2 border-r border-form-border text-center font-medium text-sm">NO.</div>
+              <div className="col-span-1 p-2 border-r border-form-border text-center font-medium text-sm">QTY</div>
+              <div className="col-span-4 p-2 border-r border-form-border text-center font-medium text-sm">ITEMS</div>
+              <div className="col-span-3 p-2 border-r border-form-border text-center font-medium text-sm">Serial Number</div>
+              <div className="col-span-1.5 p-2 border-r border-form-border text-center font-medium text-sm">USED</div>
+              <div className="col-span-1.5 p-2 text-center font-medium text-sm">RETURN</div>
             </div>
 
             {/* Table Rows */}
             {items.map((item, index) => (
-              <div key={index} className="grid grid-cols-6 border-b border-form-border">
-                <div className="p-2 border-r border-form-border text-center text-sm">{item.no}</div>
-                <div className="p-1 border-r border-form-border">
+              <div key={index} className="grid grid-cols-12 border-b border-form-border">
+                <div className="col-span-1 p-2 border-r border-form-border text-center text-sm">{item.no}</div>
+                <div className="col-span-1 p-1 border-r border-form-border">
                   <Input
                     value={item.qty}
                     onChange={(e) => updateItem(index, "qty", e.target.value)}
                     className="border-0 text-center text-sm h-8"
                   />
                 </div>
-                <div className="p-1 border-r border-form-border">
+                <div className="col-span-4 p-1 border-r border-form-border">
                   <Input
                     value={item.items}
                     onChange={(e) => updateItem(index, "items", e.target.value)}
                     className="border-0 text-sm h-8"
                   />
                 </div>
-                <div className="p-1 border-r border-form-border">
+                <div className="col-span-3 p-1 border-r border-form-border">
                   <Input
                     value={item.serialNumber}
                     onChange={(e) => updateItem(index, "serialNumber", e.target.value)}
                     className="border-0 text-sm h-8"
                   />
                 </div>
-                <div className="p-1 border-r border-form-border">
+                <div className="col-span-1.5 p-1 border-r border-form-border">
                   <Input
                     value={item.used}
                     onChange={(e) => updateItem(index, "used", e.target.value)}
                     className="border-0 text-sm h-8"
                   />
                 </div>
-                <div className="p-1">
+                <div className="col-span-1.5 p-1">
                   <Input
                     value={item.return}
                     onChange={(e) => updateItem(index, "return", e.target.value)}
@@ -210,9 +210,9 @@ const RequestForm = () => {
             ))}
 
             {/* Return Date Row */}
-            <div className="grid grid-cols-6 bg-table-header">
-              <div className="p-2 border-r border-form-border font-medium text-sm">Return Date</div>
-              <div className="p-1 col-span-5">
+            <div className="grid grid-cols-12 bg-table-header">
+              <div className="col-span-2 p-2 border-r border-form-border font-medium text-sm">Return Date</div>
+              <div className="col-span-10 p-1">
                 <Input
                   type="date"
                   value={formData.returnDate}
