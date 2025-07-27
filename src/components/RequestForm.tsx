@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Printer, FileDown } from "lucide-react";
 
 interface RequestItem {
   no: number;
@@ -50,9 +52,32 @@ const RequestForm = () => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
+  const handlePrint = () => {
+    window.print();
+  };
+
+  const handleSavePDF = () => {
+    // Use browser's print dialog and user can choose "Save as PDF"
+    window.print();
+  };
+
   return (
     <div className="min-h-screen bg-background p-8">
-      <Card className="max-w-5xl mx-auto p-0 border-2 border-primary/20">
+      {/* Print/PDF Controls - Hidden during print */}
+      <div className="max-w-5xl mx-auto mb-4 print:hidden">
+        <div className="flex gap-3 justify-end">
+          <Button onClick={handlePrint} variant="outline" className="flex items-center gap-2">
+            <Printer size={16} />
+            Print
+          </Button>
+          <Button onClick={handleSavePDF} className="flex items-center gap-2">
+            <FileDown size={16} />
+            Save as PDF
+          </Button>
+        </div>
+      </div>
+
+      <Card className="max-w-5xl mx-auto p-0 border-2 border-primary/20 print:border-black print:shadow-none">
         {/* Header */}
         <div className="text-center py-4 border-b-2 border-primary/20">
           <h1 className="text-2xl font-bold text-primary">REQUEST FORM</h1>
